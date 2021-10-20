@@ -37,15 +37,9 @@ export default function LockForm() {
     },
     validationSchema: RegisterSchema,
     onSubmit: ({ link, password }) => {
-      const e = CryptoJS.AES.encrypt(link, password).toString();
-      const url = window.btoa(unescape(encodeURIComponent(e)));
-      const e2 = decodeURIComponent(escape(window.atob(url)));
-      const l = CryptoJS.AES.decrypt(e2, password).toString(CryptoJS.enc.Utf8);
-      console.log(e);
-      console.log(url);
-      console.log(e2);
-      console.log(l);
-      handleOpen(url);
+      const ciper = CryptoJS.AES.encrypt(link, password).toString();
+      const encryptedLink = window.btoa(unescape(encodeURIComponent(ciper)));
+      handleOpen(encryptedLink);
     }
   });
 
