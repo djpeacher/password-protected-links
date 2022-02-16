@@ -55,7 +55,7 @@ export default function Lock() {
             <Link
               underline="none"
               variant="subtitle2"
-              href="https://www.djpeacher.com/about"
+              href="https://www.djpeacher.com/"
               target="_blank"
             >
               Jonathan Peacher
