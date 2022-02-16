@@ -7,6 +7,7 @@ import eyeFill from '@iconify/icons-eva/eye-fill';
 import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 import { Stack, TextField, IconButton, InputAdornment } from '@material-ui/core';
 import { LoadingButton } from '@material-ui/lab';
+import countapi from 'countapi-js';
 
 const CryptoJS = require('crypto-js');
 
@@ -30,7 +31,15 @@ export default function UnlockForm() {
         if (!realLink) {
           setFieldError('password', 'Incorrect password');
         } else {
-          window.location = realLink;
+          countapi
+            .hit('password-protected-links.djpeacher.com', 'links_unlocked')
+            .then(() => {
+              window.location = realLink;
+            })
+            .catch((e) => {
+              console.error(e);
+              window.location = realLink;
+            });
         }
       } catch {
         alert('Link appears to be corrupted.');

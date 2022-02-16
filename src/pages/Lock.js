@@ -1,5 +1,7 @@
+import React, { useEffect } from 'react';
 import { styled } from '@material-ui/core/styles';
 import { Box, Link, Container, Typography } from '@material-ui/core';
+import countapi from 'countapi-js';
 
 import Page from '../components/Page';
 import LockForm from '../components/LockForm';
@@ -21,6 +23,12 @@ const ContentStyle = styled('div')(({ theme }) => ({
 }));
 
 export default function Lock() {
+  useEffect(() => {
+    countapi
+      .hit('password-protected-links.djpeacher.com', 'index_visits')
+      .catch((e) => console.error(e));
+  });
+
   return (
     <RootStyle title="Password Protected Links">
       <Container>

@@ -6,6 +6,7 @@ import eyeFill from '@iconify/icons-eva/eye-fill';
 import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 import { Stack, TextField, IconButton, InputAdornment } from '@material-ui/core';
 import { LoadingButton } from '@material-ui/lab';
+import countapi from 'countapi-js';
 
 import LockedLinkDialog from './LockedLinkDialog';
 
@@ -40,6 +41,9 @@ export default function LockForm() {
       const ciper = CryptoJS.AES.encrypt(link, password).toString();
       const encryptedLink = window.btoa(unescape(encodeURIComponent(ciper)));
       handleOpen(encryptedLink);
+      countapi
+        .hit('password-protected-links.djpeacher.com', 'links_locked')
+        .catch((e) => console.error(e));
     }
   });
 

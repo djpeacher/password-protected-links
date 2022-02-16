@@ -48,6 +48,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "apexcharts": "^3.27.3",
     "change-case": "^4.1.2",
+    "countapi-js": "^1.0.2",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.23.0",
     "faker": "^5.5.3",
